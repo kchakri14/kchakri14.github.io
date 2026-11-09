@@ -1,0 +1,374 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chakravarthi Kannaiah</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Portfolio of Chakravarthi Kannaiah, Java Full Stack Software Engineer">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a service console. Hero pairs the intro with a live health-check card; experience reads as a commit log with offsets. */
+:root {
+  --bg: #F3F6F7;
+  --surface: #FFFFFF;
+  --ink: #10181D;
+  --muted: #55636B;
+  --line: #D9E1E5;
+  --accent: #0A6C8F;
+  --accent-soft: #E1F0F5;
+  --up: #1F8A4C;
+  --font-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --font-body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0D1316; --surface: #141C20; --ink: #E7EEF1; --muted: #93A3AB;
+    --line: #26333A; --accent: #4FB8DA; --accent-soft: #15303B; --up: #4CC57F;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0D1316; --surface: #141C20; --ink: #E7EEF1; --muted: #93A3AB;
+  --line: #26333A; --accent: #4FB8DA; --accent-soft: #15303B; --up: #4CC57F;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--ink);
+  font-family: var(--font-body); font-size: 16px; line-height: 1.6;
+}
+.wrap {
+  max-width: 1080px; margin: 0 auto;
+  padding-left: max(20px, env(safe-area-inset-left, 0px));
+  padding-right: max(20px, env(safe-area-inset-right, 0px));
+}
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+h1, h2, h3 { font-family: var(--font-display); text-wrap: balance; margin: 0; letter-spacing: -0.01em; }
+.mono { font-family: var(--font-mono); }
+.label {
+  font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--muted);
+}
+
+/* Nav */
+nav.top { padding-block: 22px; }
+nav.top .wrap { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+.brand { font-family: var(--font-display); font-weight: 800; font-size: 20px; color: var(--ink); }
+.brand span { color: var(--accent); }
+.navlinks { display: flex; gap: 22px; flex-wrap: wrap; font-size: 14px; font-weight: 500; }
+.navlinks a { color: var(--muted); }
+.navlinks a:hover { color: var(--ink); text-decoration: none; }
+
+/* Hero */
+.hero { padding-block: 48px 72px; }
+.hero .wrap { display: grid; grid-template-columns: 1.25fr 1fr; gap: 48px; align-items: center; }
+.hero h1 { font-size: clamp(40px, 6.2vw, 72px); font-weight: 800; line-height: 1.02; }
+.hero .role { font-family: var(--font-display); font-size: clamp(20px, 2.4vw, 26px); font-weight: 500; color: var(--accent); margin-top: 14px; }
+.hero p.intro { color: var(--muted); max-width: 60ch; margin: 22px 0 28px; font-size: 17px; }
+.cta { display: flex; gap: 12px; flex-wrap: wrap; }
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 11px 18px; border-radius: 8px; font-weight: 600; font-size: 15px;
+  border: 1px solid var(--line); color: var(--ink); background: var(--surface); cursor: pointer;
+  font-family: var(--font-body);
+}
+.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--bg); }
+.btn:hover { text-decoration: none; filter: brightness(1.05); }
+
+.health {
+  background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
+  font-family: var(--font-mono); font-size: 13.5px; overflow: hidden; min-width: 0;
+  box-shadow: 0 18px 40px -24px rgba(10, 60, 80, 0.35);
+}
+.health .bar { display: flex; align-items: center; gap: 10px; padding: 12px 16px; border-bottom: 1px solid var(--line); color: var(--muted); }
+.health .bar b { color: var(--accent); font-weight: 500; }
+.health pre { margin: 0; padding: 18px; overflow-x: auto; line-height: 1.7; color: var(--ink); }
+.facts { margin: 0; padding: 6px 18px 10px; font-family: var(--font-body); font-size: 15px; }
+.facts div { display: flex; justify-content: space-between; gap: 16px; padding-block: 11px; border-bottom: 1px solid var(--line); }
+.facts div:last-child { border-bottom: 0; }
+.facts dt { color: var(--muted); }
+.facts dd { margin: 0; font-weight: 500; text-align: right; }
+.k { color: var(--accent); }
+.s { color: var(--muted); }
+.up { color: var(--up); font-weight: 500; }
+.dot { width: 8px; height: 8px; border-radius: 50%; background: var(--up); display: inline-block; animation: pulse 2s ease-in-out infinite; }
+@keyframes pulse { 50% { opacity: 0.35; } }
+
+/* Sections */
+section.block { padding-block: 64px; border-top: 1px solid var(--line); }
+.head { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap; margin-bottom: 36px; }
+.head h2 { font-size: clamp(28px, 3.6vw, 40px); font-weight: 700; }
+
+/* Stats */
+.stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+.stat { background: var(--surface); padding: 22px; }
+.stat b { display: block; font-family: var(--font-display); font-size: 34px; font-weight: 700; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.stat span { color: var(--muted); font-size: 14px; }
+
+/* Experience log */
+.log { display: grid; gap: 0; }
+.entry { display: grid; grid-template-columns: 150px 1fr; gap: 28px; padding-block: 28px; border-bottom: 1px dashed var(--line); }
+.entry:last-child { border-bottom: 0; }
+.entry .meta { font-family: var(--font-mono); font-size: 13px; color: var(--muted); }
+.entry .meta .offset { display: inline-block; color: var(--accent); background: var(--accent-soft); padding: 2px 8px; border-radius: 4px; margin-bottom: 8px; }
+.entry h3 { font-size: 22px; font-weight: 700; }
+.entry .co { color: var(--muted); margin: 2px 0 12px; font-weight: 500; }
+.entry ul { margin: 0; padding-left: 18px; display: grid; gap: 6px; max-width: 72ch; }
+.entry li::marker { color: var(--accent); }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
+.tag { font-family: var(--font-mono); font-size: 12px; padding: 3px 9px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); }
+
+/* Projects */
+.projects { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+.proj { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 26px; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.proj .where { font-family: var(--font-mono); font-size: 12px; color: var(--accent); letter-spacing: 0.04em; }
+.proj h3 { font-size: 21px; font-weight: 700; }
+.proj p { margin: 0; color: var(--muted); }
+.proj .metric { font-family: var(--font-mono); font-size: 13px; color: var(--ink); border-top: 1px solid var(--line); padding-top: 12px; margin-top: auto; }
+
+/* Skills */
+.skills { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px 36px; }
+.skill h3 { font-family: var(--font-mono); font-size: 13px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
+.skill p { margin: 0; color: var(--ink); font-size: 15px; }
+
+/* Education */
+.edu { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.edu > div { border-left: 2px solid var(--accent); padding-left: 18px; }
+.edu h3 { font-size: 18px; font-weight: 700; }
+.edu p { margin: 4px 0 0; color: var(--muted); font-size: 15px; }
+
+/* Contact */
+.contact { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 40px; display: grid; grid-template-columns: 1.2fr 1fr; gap: 32px; align-items: center; }
+.contact h2 { font-size: clamp(28px, 3.6vw, 40px); font-weight: 700; }
+.contact p { color: var(--muted); margin: 12px 0 0; max-width: 50ch; }
+.channels { display: grid; gap: 12px; }
+.channel { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 14px 16px; border: 1px solid var(--line); border-radius: 10px; min-width: 0; }
+.channel .v { font-family: var(--font-mono); font-size: 14px; overflow-wrap: anywhere; user-select: all; }
+.copy { font-size: 13px; padding: 6px 12px; }
+
+footer { padding-block: 36px 48px; color: var(--muted); font-size: 13px; font-family: var(--font-mono); }
+
+@media (max-width: 860px) {
+  .hero .wrap, .contact { grid-template-columns: 1fr; }
+  .stats { grid-template-columns: repeat(2, 1fr); }
+  .projects, .edu { grid-template-columns: 1fr; }
+  .skills { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 560px) {
+  .entry { grid-template-columns: 1fr; gap: 8px; }
+  .skills { grid-template-columns: 1fr; }
+  .contact { padding: 24px; }
+  .navlinks { gap: 14px; }
+}
+@media (prefers-reduced-motion: reduce) { .dot { animation: none; } }
+</style>
+</head>
+<body>
+
+<nav class="top">
+  <div class="wrap">
+    <div class="brand">chakravarthi<span>.</span>dev</div>
+    <div class="navlinks">
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <div class="label">Software Engineer · Arizona, USA</div>
+      <h1>Chakravarthi Kannaiah</h1>
+      <div class="role">Java Full Stack &amp; Backend Engineer</div>
+      <p class="intro">I design, build and run scalable distributed systems and full-stack applications with Java, Spring Boot, microservices, AWS and React. Over 4+ years I've shipped event-driven services on Kafka, cloud-native SaaS platforms on Kubernetes, and Generative AI features with Spring AI and OpenAI.</p>
+      <div class="cta">
+        <a class="btn primary" href="https://www.linkedin.com/in/chakravarthi-kannaiah" target="_blank" rel="noopener">LinkedIn ↗</a>
+        <a class="btn" href="#contact">Get in touch</a>
+        <a class="btn" href="https://www.credly.com/badges/4d973fba-1197-4cdb-8406-882ef0fb232b" target="_blank" rel="noopener">AWS Certified ↗</a>
+      </div>
+    </div>
+    <div class="health" aria-label="Profile summary">
+      <div class="bar"><span class="dot"></span>Open to work</div>
+      <dl class="facts">
+        <div><dt>Role</dt><dd>Java Full Stack Developer</dd></div>
+        <div><dt>Current</dt><dd>Infosys</dd></div>
+        <div><dt>Experience</dt><dd>4+ years</dd></div>
+        <div><dt>Core stack</dt><dd>Java, Spring Boot, Kafka, AWS, React</dd></div>
+        <div><dt>Certified</dt><dd>AWS Developer – Associate</dd></div>
+        <div><dt>Location</dt><dd>Arizona · open to remote</dd></div>
+      </dl>
+    </div>
+  </div>
+</header>
+
+<section class="block">
+  <div class="wrap">
+    <div class="stats">
+      <div class="stat"><b>4+</b><span>years building production software</span></div>
+      <div class="stat"><b>40%</b><span>latency cut on AI microservices at Gartner</span></div>
+      <div class="stat"><b>M+</b><span>records processed by services I built</span></div>
+      <div class="stat"><b>4</b><span>companies across SaaS, analytics and fintech</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="experience">
+  <div class="wrap">
+    <div class="head"><h2>Experience</h2><span class="label">Commit log · newest first</span></div>
+    <div class="log">
+      <article class="entry">
+        <div class="meta"><span class="offset">offset 04</span><br>Jul 2025 – Present</div>
+        <div>
+          <h3>Java Full Stack Developer</h3>
+          <div class="co">Infosys Limited</div>
+          <ul>
+            <li>Build cloud-native microservices for a multi-tenant SaaS platform with Java 21, Spring Boot 3, Spring Cloud and Spring Security 6 (OAuth2/JWT), using Kafka for event-driven communication and PostgreSQL with Redis caching.</li>
+            <li>Ship reusable React 18 + TypeScript UI modules and maintain a Storybook component library aligned with Figma and WCAG accessibility.</li>
+            <li>Integrate LLM-powered product features with Spring AI and OpenAI APIs.</li>
+            <li>Automate releases with GitHub Actions, Docker, Kubernetes (EKS), Helm and Terraform; monitor with Prometheus, Grafana, OpenTelemetry and ELK.</li>
+          </ul>
+          <div class="tags"><span class="tag">Java 21</span><span class="tag">Kafka</span><span class="tag">EKS</span><span class="tag">React 18</span><span class="tag">Spring AI</span></div>
+        </div>
+      </article>
+      <article class="entry">
+        <div class="meta"><span class="offset">offset 03</span><br>Aug 2023 – Jun 2025</div>
+        <div>
+          <h3>Java Full Stack Developer</h3>
+          <div class="co">Gartner</div>
+          <ul>
+            <li>Built and deployed AI-driven microservices on AWS with Java 11 and Spring Boot, processing millions of records and reducing latency by 40%.</li>
+            <li>Delivered AI-powered analytics features end to end, from Spring Boot REST APIs to React and TypeScript dashboards.</li>
+            <li>Split large modules into reusable services and automated pipelines with Jenkins, Docker and AWS for faster, repeatable releases.</li>
+          </ul>
+          <div class="tags"><span class="tag">Spring Boot</span><span class="tag">AWS</span><span class="tag">React</span><span class="tag">Jenkins</span></div>
+        </div>
+      </article>
+      <article class="entry">
+        <div class="meta"><span class="offset">offset 02</span><br>Nov 2020 – Jul 2021</div>
+        <div>
+          <h3>Software Engineer</h3>
+          <div class="co">Edge 3D Technologies · Bangalore</div>
+          <ul>
+            <li>Built Angular 10 single-page dashboards with JWT authentication and role-based access control.</li>
+            <li>Designed Spring Boot and Node.js microservices on AWS EC2 and S3 with REST APIs and WebSockets.</li>
+          </ul>
+          <div class="tags"><span class="tag">Angular</span><span class="tag">Node.js</span><span class="tag">RBAC</span></div>
+        </div>
+      </article>
+      <article class="entry">
+        <div class="meta"><span class="offset">offset 01</span><br>Jul 2020 – Nov 2020</div>
+        <div>
+          <h3>Java Developer</h3>
+          <div class="co">NANOMINDS Technologies · Visakhapatnam</div>
+          <ul>
+            <li>Developed a real-time financial transaction monitoring system with Spring Boot, WebSockets and React that pushes instant alerts on banking activity.</li>
+          </ul>
+          <div class="tags"><span class="tag">WebSockets</span><span class="tag">Fintech</span></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="projects">
+  <div class="wrap">
+    <div class="head"><h2>Selected work</h2><span class="label">From production and internships</span></div>
+    <div class="projects">
+      <article class="proj">
+        <div class="where">INFOSYS · SAAS PLATFORM</div>
+        <h3>Multi-tenant SaaS on Kubernetes</h3>
+        <p>Event-driven microservices on Kafka with OAuth2/JWT security, Redis caching and a React front end, deployed to AWS EKS through Helm and Terraform.</p>
+        <div class="metric">Java 21 · Spring Cloud · Kafka · EKS · Terraform</div>
+      </article>
+      <article class="proj">
+        <div class="where">GARTNER · ANALYTICS</div>
+        <h3>AI-driven analytics microservices</h3>
+        <p>Spring Boot services on AWS powering AI features in analytics products, surfaced through React and TypeScript dashboards.</p>
+        <div class="metric">Latency −40% · millions of records</div>
+      </article>
+      <article class="proj">
+        <div class="where">DATAQUAD · INTERNSHIP</div>
+        <h3>AI fraud detection module</h3>
+        <p>Owned end to end: Python and pre-trained ML models analyzing transaction patterns, with tuned anomaly scoring to cut false positives.</p>
+        <div class="metric">Python · scikit-learn · anomaly detection</div>
+      </article>
+      <article class="proj">
+        <div class="where">NANOMINDS · FINTECH</div>
+        <h3>Real-time transaction monitor</h3>
+        <p>Spring Boot services validating banking transactions and streaming live alerts to a React dashboard over WebSockets.</p>
+        <div class="metric">Spring Boot · WebSockets · React</div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="skills">
+  <div class="wrap">
+    <div class="head"><h2>Skills</h2><span class="label">Daily drivers first</span></div>
+    <div class="skills">
+      <div class="skill"><h3>Backend</h3><p>Java 8/11/21, Spring Boot 3, Spring Cloud, Spring Security 6, Hibernate, Node.js, Flask</p></div>
+      <div class="skill"><h3>Architecture</h3><p>Microservices, event-driven design, REST, GraphQL, WebSockets, OAuth2/JWT, RBAC</p></div>
+      <div class="skill"><h3>Cloud</h3><p>AWS (EC2, S3, Lambda, EKS, RDS, DynamoDB, SQS, SNS, CloudWatch), Serverless</p></div>
+      <div class="skill"><h3>Data &amp; messaging</h3><p>PostgreSQL, MySQL, MongoDB, Redis, DynamoDB, Apache Kafka, MQTT</p></div>
+      <div class="skill"><h3>DevOps</h3><p>Docker, Kubernetes, Helm, Terraform, GitHub Actions, Jenkins, Prometheus, Grafana</p></div>
+      <div class="skill"><h3>Frontend</h3><p>React 18, Redux Toolkit, TypeScript, Angular, Tailwind CSS, Storybook</p></div>
+      <div class="skill"><h3>AI &amp; LLM</h3><p>Spring AI, OpenAI APIs, prompt engineering, scikit-learn, Copilot, Claude, Cursor</p></div>
+      <div class="skill"><h3>Testing</h3><p>JUnit 5, Mockito, Testcontainers, Jest, React Testing Library, Playwright, SonarQube</p></div>
+      <div class="skill"><h3>Practices</h3><p>System design, data structures &amp; algorithms, SOLID, Agile/Scrum, code reviews</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <div class="head"><h2>Education &amp; certification</h2></div>
+    <div class="edu">
+      <div><h3>M.S. Information Systems</h3><p>The University of Texas at Arlington<br>2021 – 2023</p></div>
+      <div><h3>B.Tech Computer Science</h3><p>Vignan Institute of Information Technology<br>2016 – 2020</p></div>
+      <div><h3>AWS Certified Developer – Associate</h3><p>Amazon Web Services<br><a href="https://www.credly.com/badges/4d973fba-1197-4cdb-8406-882ef0fb232b" target="_blank" rel="noopener">Verify on Credly ↗</a></p></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="contact">
+  <div class="wrap">
+    <div class="contact">
+      <div>
+        <div class="label">Open to full-time roles</div>
+        <h2>Let's build something reliable.</h2>
+        <p>I'm looking for Java backend and full-stack roles in Arizona or remote across the US. Email is the fastest way to reach me.</p>
+      </div>
+      <div class="channels">
+        <div class="channel"><span class="v" id="email-val">chakrisurya14@gmail.com</span><button class="btn copy" id="copy-email" type="button">Copy</button></div>
+        <div class="channel"><a class="v" href="https://www.linkedin.com/in/chakravarthi-kannaiah" target="_blank" rel="noopener">linkedin.com/in/chakravarthi-kannaiah</a><span class="label">↗</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer><div class="wrap">© 2026 Chakravarthi Kannaiah · built with Java-engineer precision</div></footer>
+
+<script>
+document.getElementById('copy-email').addEventListener('click', function () {
+  var btn = this, text = document.getElementById('email-val').textContent;
+  function done(msg) { btn.textContent = msg; setTimeout(function () { btn.textContent = 'Copy'; }, 1600); }
+  function fallback() {
+    var r = document.createRange(); r.selectNodeContents(document.getElementById('email-val'));
+    var s = window.getSelection(); s.removeAllRanges(); s.addRange(r); done('Selected');
+  }
+  try { navigator.clipboard.writeText(text).then(function () { done('Copied'); }, fallback); }
+  catch (e) { fallback(); }
+});
+</script>
+</body>
+</html>
